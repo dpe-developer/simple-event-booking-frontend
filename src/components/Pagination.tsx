@@ -11,10 +11,16 @@ export default function Pagination({
   loading,
   onPageChange,
 }: PaginationProps) {
+
+  const handlePageChange = (page: number) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    onPageChange(page);
+  };
+
   return (
     <div className="mt-8 mb-8 flex justify-center items-center gap-4">
       <button
-        onClick={() => onPageChange(currentPage - 1)}
+        onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1 || loading}
         className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
       >
@@ -24,7 +30,7 @@ export default function Pagination({
         Page {currentPage} of {lastPage}
       </span>
       <button
-        onClick={() => onPageChange(currentPage + 1)}
+        onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === lastPage || loading}
         className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
       >
