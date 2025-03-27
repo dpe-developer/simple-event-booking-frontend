@@ -197,7 +197,8 @@ export default function EventPage() {
                 <Typography color="blue-gray" className="mb-2">
                   <Users className="float-left mr-2" />
                   <span className="grid grid-flow-col">
-                    {event.available_slots}
+                    {event.total_bookings}/{event.capacity}
+                    {' (Available slots: ' + event.available_slots + ')'}
                   </span>
                 </Typography>
                 <Typography color="blue-gray" className="mb-2">
