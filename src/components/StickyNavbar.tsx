@@ -179,7 +179,7 @@ export default function StickyNavbar() {
                   className="hidden lg:inline-block"
                   onClick={handleOpenRegisterDialog}
                 >
-                  <span>Sign in</span>
+                  <span>Sign Up</span>
                 </Button>
               </>
               )}
@@ -247,8 +247,13 @@ export default function StickyNavbar() {
                 >
                   <span>Log In</span>
                 </Button>
-                <Button fullWidth variant="gradient" size="sm" className="">
-                  <span>Sign in</span>
+                <Button
+                  onClick={handleOpenRegisterDialog}
+                  fullWidth
+                  variant="gradient"
+                  size="sm"
+                >
+                  <span>Sign Up</span>
                 </Button>
               </>
             )}

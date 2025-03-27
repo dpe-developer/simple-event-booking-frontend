@@ -118,7 +118,7 @@ export default function LoginModal({
           >
             Sign In
           </Button>
-          <Typography variant="small" className="mt-4 flex justify-center">
+          {/* <Typography variant="small" className="mt-4 flex justify-center">
             Don&apos;t have an account?
             <Typography
               as="a"
@@ -129,7 +129,7 @@ export default function LoginModal({
             >
               Sign up
             </Typography>
-          </Typography>
+          </Typography> */}
         </CardFooter>
       </Card>
     </Dialog>

@@ -70,13 +70,6 @@ export default function RegisterModal({
           <Typography variant="h4" color="blue-gray">
             Sign Up
           </Typography>
-          <Typography
-            className="mb-3 font-normal"
-            variant="paragraph"
-            color="gray"
-          >
-            Enter your email and password to Sign In.
-          </Typography>
           {error && (
             <Typography variant="small" color="red" className="text-center">
               {error}
@@ -129,7 +122,7 @@ export default function RegisterModal({
           <Button variant="gradient" onClick={handleRegistration} loading={loading} fullWidth>
             Sign Up
           </Button>
-          <Typography variant="small" className="mt-4 flex justify-center">
+          {/* <Typography variant="small" className="mt-4 flex justify-center">
             Already have an account?
             <Typography
               as="a"
@@ -140,7 +133,7 @@ export default function RegisterModal({
             >
               Sign in
             </Typography>
-          </Typography>
+          </Typography> */}
         </CardFooter>
       </Card>
     </Dialog>
