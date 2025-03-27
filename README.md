@@ -6,12 +6,12 @@ This is the frontend application for the Simple Event Booking system. It provide
 
 - View available events
 - Book events with ease
+- Booking notification via email
 - Responsive design for all devices
 
 ## Prerequisites
 
-- Node.js (v14 or higher)
-- npm (v6 or higher)
+- Node.js (v18 or higher)
 
 ## Installation
 
@@ -32,9 +32,9 @@ This is the frontend application for the Simple Event Booking system. It provide
 
 1. Start the development server:
   ```bash
-  npm start
+  npm run dev
   ```
-2. Open your browser and navigate to `http://localhost:3000`.
+2. Open your browser and navigate to `http://localhost:5173`.
 
 ## Build for Production
 
@@ -43,6 +43,3 @@ To create a production build, run:
 npm run build
 ```
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
