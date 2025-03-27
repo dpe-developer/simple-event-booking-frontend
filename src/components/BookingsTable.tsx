@@ -22,7 +22,7 @@ const TABLE_HEAD = ['#', 'Name', 'Date Booked', 'Account', ''];
 export default function BookingsTable({ bookings }: { bookings: any[] }) {
   return (
     <section className="w-full bg-white">
-      <div className="p-6">
+      <div>
         <Typography variant="lead" color="blue-gray" className="font-bold">
           Bookings
         </Typography>
@@ -57,8 +57,8 @@ export default function BookingsTable({ bookings }: { bookings: any[] }) {
                   bookings.map((booking, index) => {
                     const isLast = index === bookings.length - 1;
                     const classes = isLast
-                      ? 'p-4'
-                      : 'p-4 border-b border-blue-gray-50';
+                      ? 'p-4 sm:py-1'
+                      : 'p-4 sm:py-1 border-b border-blue-gray-50';
 
                     return (
                       <tr key={booking.id}>

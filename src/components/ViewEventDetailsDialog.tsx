@@ -11,11 +11,13 @@ import {
   DialogHeader,
   DialogFooter,
   DialogBody,
+  IconButton,
 } from '@material-tailwind/react';
 import { Calendar, MapPin, Users } from 'lucide-react';
 import { Event } from '@/types';
 import moment from 'moment';
 import BookingsTable from './BookingsTable';
+import { XMarkIcon } from '@heroicons/react/24/solid';
 
 export default function ViewEventDetailsDialog({
   isOpen,
@@ -38,8 +40,20 @@ export default function ViewEventDetailsDialog({
         escapeKey: false,
       }}
     >
-      <DialogHeader>{event?.name || 'Invalid Booking'}</DialogHeader>
-      <DialogBody className="h-[80vh] overflow-y-auto" divider={true}>
+      <DialogHeader className="relative m-0 block">
+        <Typography variant="h4" color="blue-gray">
+          {event?.name || 'Invalid Event'}
+        </Typography>
+        <IconButton
+          size="sm"
+          variant="text"
+          className="!absolute right-3.5 top-3.5"
+          onClick={() => onClose()}
+        >
+          <XMarkIcon className="h-4 w-4 stroke-2" />
+        </IconButton>
+      </DialogHeader>
+      <DialogBody className="overflow-y-auto h-[460px] sm:h-[750px]" divider={true}>
         <Typography color="blue-gray" className="mb-2">
           <Calendar className="float-left mr-2" />
           <span className="grid grid-flow-col">

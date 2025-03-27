@@ -105,7 +105,7 @@ export default function CreateEventDialog({
             <XMarkIcon className="h-4 w-4 stroke-2" />
           </IconButton>
         </DialogHeader>
-        <DialogBody className="space-y-4 pb-6">
+        <DialogBody className="space-y-4">
           <div>
             <Input
               {...register('name', { required: 'Name is required' })}
