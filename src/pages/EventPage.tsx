@@ -23,14 +23,24 @@ export default function EventPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
+  const [bookEventLoading, setBookEventLoading] = useState<{
+    [key: number]: boolean;
+  }>({});
   const [expandedDescriptions, setExpandedDescriptions] = useState<{
     [key: number]: boolean;
-  }>({}); // Track expanded state for each event
+  }>({});
+
+  const handleBookEventLoadingButton = (id: number) => {
+    setBookEventLoading((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
 
   const handleToggleDescription = (id: number) => {
     setExpandedDescriptions((prev) => ({
       ...prev,
-      [id]: !prev[id], // Toggle the expanded state for the given event ID
+      [id]: !prev[id],
     }));
   };
 
@@ -46,6 +56,7 @@ export default function EventPage() {
   };
 
   const handleBookEvent = async (eventId: number) => {
+    handleBookEventLoadingButton(eventId)
     try {
       const response = await bookEvent(eventId);
       // alert(response.message);
@@ -65,6 +76,8 @@ export default function EventPage() {
         confirmButtonText: 'Ok',
         confirmButtonColor: '#212121'
       });
+    } finally {
+      handleBookEventLoadingButton(eventId)
     }
   };
 
@@ -155,7 +168,8 @@ export default function EventPage() {
                     onClick={() => handleBookEvent(event.id)}
                     className="justify-center"
                     variant="gradient"
-                    disabled={event.available_slots <= 0}
+                    disabled={event.available_slots <= 0 || bookEventLoading[event.id]}
+                    loading={bookEventLoading[event.id]}
                   >
                     {event.available_slots > 0 ? 'Book Now' : 'Fully Booked'}
                   </Button>
