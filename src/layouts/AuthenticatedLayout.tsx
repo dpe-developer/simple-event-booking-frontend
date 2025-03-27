@@ -1,5 +1,5 @@
-import { Outlet } from "react-router-dom";
-import StickyNavbar from "@/components/StickyNavbar";
+import { Outlet } from 'react-router-dom';
+import StickyNavbar from '@/components/StickyNavbar';
 
 export default function AuthenticatedLayout() {
   return (

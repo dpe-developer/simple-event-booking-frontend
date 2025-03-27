@@ -16,30 +16,37 @@ This is the frontend application for the Simple Event Booking system. It provide
 ## Installation
 
 1. Clone the repository:
-  ```bash
-  git clone https://github.com/your-repo/simple-event-booking-frontend.git
-  ```
+
+```bash
+git clone https://github.com/your-repo/simple-event-booking-frontend.git
+```
+
 2. Navigate to the project directory:
-  ```bash
-  cd simple-event-booking-frontend
-  ```
+
+```bash
+cd simple-event-booking-frontend
+```
+
 3. Install dependencies:
-  ```bash
-  npm install
-  ```
+
+```bash
+npm install
+```
 
 ## Usage
 
 1. Start the development server:
-  ```bash
-  npm run dev
-  ```
+
+```bash
+npm run dev
+```
+
 2. Open your browser and navigate to `http://localhost:5173`.
 
 ## Build for Production
 
 To create a production build, run:
+
 ```bash
 npm run build
 ```
-

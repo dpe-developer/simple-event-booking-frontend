@@ -1,8 +1,16 @@
 import { Card, CardBody, Typography } from '@material-tailwind/react';
 
-export default function SkeletonLoader({ count = 9, cols = 3 }: { count?: number, cols?: number }) {
+export default function SkeletonLoader({
+  count = 9,
+  cols = 3,
+}: {
+  count?: number;
+  cols?: number;
+}) {
   return (
-    <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${cols} gap-6 animate-pulse`}>
+    <div
+      className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${cols} gap-6 animate-pulse`}
+    >
       {Array.from({ length: count }).map((_, index) => (
         <Card className="shadow-none" key={index}>
           <CardBody>

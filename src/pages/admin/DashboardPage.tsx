@@ -1,10 +1,15 @@
-import { Typography, Card, CardBody, CardFooter, Button } from "@material-tailwind/react";
+import {
+  Typography,
+  Card,
+  CardBody,
+  CardFooter,
+  Button,
+} from '@material-tailwind/react';
 import { fetchDashboardData as fetchDashboardDataService } from '@/services/dashboardService';
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import CountUp from 'react-countup';
 
 export default function Dashboard() {
-
   const [loading, setLoading] = useState(true);
   const [totalEvents, setTotalEvents] = useState<number>(0);
   const [totalBookings, setTotalBookings] = useState<number>(0);
@@ -12,7 +17,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchDashboardData();
-    }, []);
+  }, []);
 
   const fetchDashboardData = async () => {
     setLoading(true);
@@ -104,19 +109,19 @@ export default function Dashboard() {
             </Typography>
             <Typography variant="h4">
               <CountUp
-                  start={0}
-                  end={totalUsers}
-                  duration={2.75}
-                  separator=" "
-                  decimal=","
-                >
-                  {({ countUpRef, start }) => (
-                    <div>
-                      <span ref={countUpRef} />
-                      <button onClick={start}></button>
-                    </div>
-                  )}
-                </CountUp>
+                start={0}
+                end={totalUsers}
+                duration={2.75}
+                separator=" "
+                decimal=","
+              >
+                {({ countUpRef, start }) => (
+                  <div>
+                    <span ref={countUpRef} />
+                    <button onClick={start}></button>
+                  </div>
+                )}
+              </CountUp>
             </Typography>
           </CardBody>
           {/* <CardFooter>

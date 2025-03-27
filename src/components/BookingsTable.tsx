@@ -1,8 +1,8 @@
-import { PencilIcon } from "@heroicons/react/24/solid";
+import { PencilIcon } from '@heroicons/react/24/solid';
 import {
   ArrowDownTrayIcon,
   MagnifyingGlassIcon,
-} from "@heroicons/react/24/outline";
+} from '@heroicons/react/24/outline';
 import {
   Card,
   CardHeader,
@@ -15,10 +15,10 @@ import {
   IconButton,
   Tooltip,
   Input,
-} from "@material-tailwind/react";
- 
-const TABLE_HEAD = ["#", "Name", "Date Booked", "Account", ""];
- 
+} from '@material-tailwind/react';
+
+const TABLE_HEAD = ['#', 'Name', 'Date Booked', 'Account', ''];
+
 export default function BookingsTable({ bookings }: { bookings: any[] }) {
   return (
     <section className="w-full bg-white">
@@ -53,18 +53,16 @@ export default function BookingsTable({ bookings }: { bookings: any[] }) {
                 </tr>
               </thead>
               <tbody>
-                {bookings.length > 0 ?
+                {bookings.length > 0 ? (
                   bookings.map((booking, index) => {
                     const isLast = index === bookings.length - 1;
                     const classes = isLast
-                      ? "p-4"
-                      : "p-4 border-b border-blue-gray-50";
+                      ? 'p-4'
+                      : 'p-4 border-b border-blue-gray-50';
 
                     return (
                       <tr key={booking.id}>
-                        <td className={classes}>
-                          {index+1}
-                        </td>
+                        <td className={classes}>{index + 1}</td>
                         <td className={classes}>
                           <div className="flex items-center gap-3">
                             <Typography
@@ -95,13 +93,13 @@ export default function BookingsTable({ bookings }: { bookings: any[] }) {
                       </tr>
                     );
                   })
-                : 
-                    <tr>
-                      <td colSpan={4} className="p-4 text-center text-red-400">
-                        *** EMPTY ***
-                      </td>
-                    </tr>
-                }
+                ) : (
+                  <tr>
+                    <td colSpan={4} className="p-4 text-center text-red-400">
+                      *** EMPTY ***
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>

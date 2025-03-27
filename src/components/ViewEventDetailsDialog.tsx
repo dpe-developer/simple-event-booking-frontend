@@ -10,7 +10,7 @@ import {
   CardBody,
   DialogHeader,
   DialogFooter,
-  DialogBody, 
+  DialogBody,
 } from '@material-tailwind/react';
 import { Calendar, MapPin, Users } from 'lucide-react';
 import { Event } from '@/types';
@@ -28,7 +28,6 @@ export default function ViewEventDetailsDialog({
   event: any;
   bookings: any[];
 }) {
-
   return (
     <Dialog
       open={isOpen}
@@ -39,10 +38,8 @@ export default function ViewEventDetailsDialog({
         escapeKey: false,
       }}
     >
-      <DialogHeader>
-        {event?.name || 'Invalid Booking'}
-      </DialogHeader>
-      <DialogBody className='h-[80vh] overflow-y-auto' divider={true}>
+      <DialogHeader>{event?.name || 'Invalid Booking'}</DialogHeader>
+      <DialogBody className="h-[80vh] overflow-y-auto" divider={true}>
         <Typography color="blue-gray" className="mb-2">
           <Calendar className="float-left mr-2" />
           <span className="grid grid-flow-col">
@@ -59,25 +56,19 @@ export default function ViewEventDetailsDialog({
         </Typography>
         <Typography color="blue-gray" className="mb-2">
           <MapPin className="float-left mr-2" />
-          <span className="grid grid-flow-col">
-            {event?.location || ''}
-          </span>
+          <span className="grid grid-flow-col">{event?.location || ''}</span>
         </Typography>
-        <hr className='my-3' />
+        <hr className="my-3" />
         {/* <Typography variant='h5' color="blue-gray">
           Bookings
         </Typography> */}
         <BookingsTable bookings={bookings} />
       </DialogBody>
       <DialogFooter>
-          <Button
-            variant="gradient"
-            onClick={onClose}
-            className="mr-1"
-          >
-            <span>Close</span>
-          </Button>
-        </DialogFooter>
+        <Button variant="gradient" onClick={onClose} className="mr-1">
+          <span>Close</span>
+        </Button>
+      </DialogFooter>
     </Dialog>
   );
 }

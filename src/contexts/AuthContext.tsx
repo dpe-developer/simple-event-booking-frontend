@@ -3,21 +3,26 @@ import {
   useState,
   useEffect,
   useContext,
-  ReactNode
+  ReactNode,
 } from 'react';
 import Cookies from 'js-cookie';
 import {
   register as registerService,
   login as loginService,
   fetchUser,
-  logout as logoutService
+  logout as logoutService,
 } from '@/services/authService';
 import { User, Login, Register } from '@/types/index';
 
 interface AuthContextType {
   user: User | null | false;
-  login: ({email, password} : Login) => Promise<User>;
-  register: ({name, email, password, passwordConfirmation} : Register) => Promise<void>;
+  login: ({ email, password }: Login) => Promise<User>;
+  register: ({
+    name,
+    email,
+    password,
+    passwordConfirmation,
+  }: Register) => Promise<void>;
   logout: () => Promise<void>;
 }
 
@@ -36,7 +41,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   // Load user from localStorage on initial render
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
+    const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
@@ -47,8 +52,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     if (token) {
       fetchUser()
         .then((userData) => {
-          setUser(userData)
-          localStorage.setItem("user", JSON.stringify(userData));
+          setUser(userData);
+          localStorage.setItem('user', JSON.stringify(userData));
         })
         .catch(() => {
           logout();
@@ -59,12 +64,25 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, [token]);
 
   // TODO: User Registration
-  const register = async ({name, email, password, passwordConfirmation}: Register) => {
+  const register = async ({
+    name,
+    email,
+    password,
+    passwordConfirmation,
+  }: Register) => {
     try {
-      const { user } = await registerService(name, email, password, passwordConfirmation);
+      const { user } = await registerService(
+        name,
+        email,
+        password,
+        passwordConfirmation
+      );
       setUser(user);
     } catch (error: any) {
-      console.error('Registration failed:', error.response?.data?.message || error.message);
+      console.error(
+        'Registration failed:',
+        error.response?.data?.message || error.message
+      );
       throw new Error(error.response?.data?.message || 'Registration failed');
     }
   };
@@ -85,18 +103,20 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setUser(user); // Set the user in the context
       return user; // Return the user object
     } catch (error: any) {
-      console.error('Login failed:', error.response?.data?.message || error.message);
+      console.error(
+        'Login failed:',
+        error.response?.data?.message || error.message
+      );
       throw new Error(error.response?.data?.message || 'Login failed');
     }
   };
-  
 
   // Logout function
   const logout = async () => {
     try {
       await logoutService();
       setUser(null);
-      localStorage.removeItem("user");
+      localStorage.removeItem('user');
     } catch (error: any) {
       console.error('Logout failed:', error.message);
     }

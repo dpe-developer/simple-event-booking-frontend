@@ -13,7 +13,7 @@ export default function ProtectedRoute({
     return 'Loading...';
     // return <Loading />; // Show a loading indicator while fetching user data
   } */
-  
+
   if (user === false) {
     return <Navigate to="/" replace />;
     // return null;

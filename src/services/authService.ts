@@ -1,7 +1,8 @@
 import axiosInstance from '../utils/axiosInstance';
 import Cookies from 'js-cookie';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
 export const login = async (email: string, password: string) => {
   const response = await axiosInstance.post(`${API_BASE_URL}/auth/login`, {
@@ -22,7 +23,7 @@ export const register = async (
   email: string,
   password: string,
   passwordConfirmation: string
-  ) => {
+) => {
   const response = await axiosInstance.post(`${API_BASE_URL}/auth/register`, {
     name,
     email,
@@ -44,14 +45,15 @@ export const fetchUser = async () => {
 
 export const logout = async () => {
   // Optionally, call a logout endpoint on the server
-  await axiosInstance.post(`${API_BASE_URL}/auth/logout`)
-  .then(() => {
-    Cookies.remove('token'); // Remove token from cookies
-  })
-  .catch((error) => {
-    console.log(error);
-  })
-  .finally(() => {
-    Cookies.remove('token'); // Remove token from cookies
-  });
+  await axiosInstance
+    .post(`${API_BASE_URL}/auth/logout`)
+    .then(() => {
+      Cookies.remove('token'); // Remove token from cookies
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(() => {
+      Cookies.remove('token'); // Remove token from cookies
+    });
 };

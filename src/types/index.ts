@@ -26,10 +26,10 @@ export interface Event {
   capacity: number;
   total_bookings: number;
   available_slots: number;
-};
+}
 
 export interface ViewEvent {
-  booking: any
+  booking: any;
 }
 
 export interface EventInputs {
@@ -39,7 +39,7 @@ export interface EventInputs {
   time: string;
   capacity: number | null;
   description: string;
-};
+}
 
 export type PageProps<
   T extends Record<string, unknown> = Record<string, unknown>,

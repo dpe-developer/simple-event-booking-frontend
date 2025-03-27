@@ -1,14 +1,22 @@
-import { Button, Card, CardBody, CardFooter, Typography } from "@material-tailwind/react";
-import SkeletonLoader from "@/components/EventSkeletonLoader";
-import { Calendar, MapPin, Users } from "lucide-react";
-import ProtectedRoute from "@/components/ProtectedRoute";
-import { cancelBooking, fetchBookings as fetchBookingsService } from '@/services/bookingService';
-import moment from "moment";
-import { useEffect, useState } from "react";
-import Pagination from "@/components/Pagination";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  Typography,
+} from '@material-tailwind/react';
+import SkeletonLoader from '@/components/EventSkeletonLoader';
+import { Calendar, MapPin, Users } from 'lucide-react';
+import ProtectedRoute from '@/components/ProtectedRoute';
+import {
+  cancelBooking,
+  fetchBookings as fetchBookingsService,
+} from '@/services/bookingService';
+import moment from 'moment';
+import { useEffect, useState } from 'react';
+import Pagination from '@/components/Pagination';
 
 export default function Booking() {
-
   type Booking = {
     /* id: number;
     name: string;
@@ -22,7 +30,6 @@ export default function Booking() {
     user: any;
     event: any;
     created_at: any;
-    
   };
 
   const [loading, setLoading] = useState(true);
@@ -55,16 +62,16 @@ export default function Booking() {
   };
 
   const handleCancelBooking = async (bookingId: number) => {
-      try {
-        const response = await cancelBooking(bookingId);
-        alert(response.message); // Show success message
-        // Optionally, refetch events to update available slots
-        fetchBookings(currentPage, searchQuery);
-      } catch (error: any) {
-        console.error('Error booking event:', error);
-        alert(error.response?.data?.error || 'Failed to book the event');
-      }
-    };
+    try {
+      const response = await cancelBooking(bookingId);
+      alert(response.message); // Show success message
+      // Optionally, refetch events to update available slots
+      fetchBookings(currentPage, searchQuery);
+    } catch (error: any) {
+      console.error('Error booking event:', error);
+      alert(error.response?.data?.error || 'Failed to book the event');
+    }
+  };
 
   const handleToggleDescription = (id: number) => {
     setExpandedDescriptions((prev) => ({
@@ -85,7 +92,10 @@ export default function Booking() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {bookings.map((booking) => (
-            <Card key={booking.id} className="shadow-md flex flex-col justify-between">
+            <Card
+              key={booking.id}
+              className="shadow-md flex flex-col justify-between"
+            >
               <CardBody>
                 <Typography variant="h5" color="blue-gray" className="mb-2">
                   {booking.event.name}
@@ -104,25 +114,31 @@ export default function Booking() {
                 </Typography>
                 <Typography color="blue-gray" className="mb-2">
                   <MapPin className="float-left mr-2" />
-                  <span className="grid grid-flow-col">{booking.event.location}</span>
+                  <span className="grid grid-flow-col">
+                    {booking.event.location}
+                  </span>
                 </Typography>
                 <div
                   className={`mb-2 ${
-                    expandedDescriptions[booking.id] ? 'h-32 overflow-y-auto' : 'h-auto'
+                    expandedDescriptions[booking.id]
+                      ? 'h-32 overflow-y-auto'
+                      : 'h-auto'
                   }`}
                 >
                   <Typography color="blue-gray">
                     {expandedDescriptions[booking.id]
                       ? booking.event.description // Show full description if expanded
                       : booking.event.description.length > 100
-                      ? `${booking.event.description.substring(0, 100)}...`
-                      : booking.event.description}
+                        ? `${booking.event.description.substring(0, 100)}...`
+                        : booking.event.description}
                     {booking.event.description.length > 100 && (
                       <button
                         onClick={() => handleToggleDescription(booking.id)}
                         className="text-blue-500 hover:underline ml-2"
                       >
-                        {expandedDescriptions[booking.id] ? 'Show Less' : 'Show More'}
+                        {expandedDescriptions[booking.id]
+                          ? 'Show Less'
+                          : 'Show More'}
                       </button>
                     )}
                   </Typography>
@@ -153,6 +169,5 @@ export default function Booking() {
         onPageChange={(page) => setCurrentPage(page)}
       />
     </>
-  )
-
+  );
 }

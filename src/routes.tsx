@@ -32,7 +32,11 @@ export const routes = createBrowserRouter([
   // Protected Routes
   {
     path: '/',
-    element: <ProtectedRoute><Layout /></ProtectedRoute>,
+    element: (
+      <ProtectedRoute>
+        <Layout />
+      </ProtectedRoute>
+    ),
     children: [
       { path: 'bookings', element: withSuspense(<Booking />) },
       { path: 'account', element: withSuspense(<Account />) },
@@ -42,7 +46,11 @@ export const routes = createBrowserRouter([
   // Admin Routes
   {
     path: '/admin',
-    element: <ProtectedRoute><AuthenticatedLayout /></ProtectedRoute>,
+    element: (
+      <ProtectedRoute>
+        <AuthenticatedLayout />
+      </ProtectedRoute>
+    ),
     children: [
       { path: 'dashboard', element: withSuspense(<Dashboard />) },
       { path: 'events', element: withSuspense(<AdminEvent />) },

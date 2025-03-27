@@ -1,4 +1,4 @@
-import { Commet } from "react-loading-indicators";
+import { Commet } from 'react-loading-indicators';
 
 const Loading = () => {
   return (
@@ -6,5 +6,5 @@ const Loading = () => {
       <Commet color="#424242" size="small" text="" textColor="" />
     </div>
   );
-}
+};
 export default Loading;

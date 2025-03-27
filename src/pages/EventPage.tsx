@@ -9,15 +9,17 @@ import {
 } from '@material-tailwind/react';
 import moment from 'moment';
 import { Calendar, MapPin, Users } from 'lucide-react';
-import { bookEvent, fetchUpcomingEvents as fetchUpcomingEventsService } from '@/services/eventService';
+import {
+  bookEvent,
+  fetchUpcomingEvents as fetchUpcomingEventsService,
+} from '@/services/eventService';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import SkeletonLoader from '@/components/EventSkeletonLoader';
 import Pagination from '@/components/Pagination';
 import { Event } from '@/types/index';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 export default function EventPage() {
-
   const [loading, setLoading] = useState(true);
   const [events, setEvents] = useState<Event[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -56,7 +58,7 @@ export default function EventPage() {
   };
 
   const handleBookEvent = async (eventId: number) => {
-    handleBookEventLoadingButton(eventId)
+    handleBookEventLoadingButton(eventId);
     try {
       const response = await bookEvent(eventId);
       // alert(response.message);
@@ -64,7 +66,7 @@ export default function EventPage() {
         title: response.message,
         icon: 'success',
         confirmButtonText: 'Ok',
-        confirmButtonColor: '#212121'
+        confirmButtonColor: '#212121',
       });
       fetchUpcomingEvents(currentPage, searchQuery);
     } catch (error: any) {
@@ -74,10 +76,10 @@ export default function EventPage() {
         text: error.response?.data?.error || 'Failed to book the event',
         icon: 'warning',
         confirmButtonText: 'Ok',
-        confirmButtonColor: '#212121'
+        confirmButtonColor: '#212121',
       });
     } finally {
-      handleBookEventLoadingButton(eventId)
+      handleBookEventLoadingButton(eventId);
     }
   };
 
@@ -119,7 +121,10 @@ export default function EventPage() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {events.map((event: Event) => (
-            <Card key={event.id} className="shadow-md flex flex-col justify-between">
+            <Card
+              key={event.id}
+              className="shadow-md flex flex-col justify-between"
+            >
               <CardBody>
                 <Typography variant="h5" color="blue-gray" className="mb-2">
                   {event.name}
@@ -142,21 +147,25 @@ export default function EventPage() {
                 </Typography>
                 <div
                   className={`mb-2 ${
-                    expandedDescriptions[event.id] ? 'h-32 overflow-y-auto' : 'h-auto'
+                    expandedDescriptions[event.id]
+                      ? 'h-32 overflow-y-auto'
+                      : 'h-auto'
                   }`}
                 >
                   <Typography color="blue-gray">
                     {expandedDescriptions[event.id]
                       ? event.description // Show full description if expanded
                       : event.description.length > 100
-                      ? `${event.description.substring(0, 100)}...`
-                      : event.description}
+                        ? `${event.description.substring(0, 100)}...`
+                        : event.description}
                     {event.description.length > 100 && (
                       <button
                         onClick={() => handleToggleDescription(event.id)}
                         className="text-blue-500 hover:underline ml-2"
                       >
-                        {expandedDescriptions[event.id] ? 'Show Less' : 'Show More'}
+                        {expandedDescriptions[event.id]
+                          ? 'Show Less'
+                          : 'Show More'}
                       </button>
                     )}
                   </Typography>
@@ -168,7 +177,9 @@ export default function EventPage() {
                     onClick={() => handleBookEvent(event.id)}
                     className="justify-center"
                     variant="gradient"
-                    disabled={event.available_slots <= 0 || bookEventLoading[event.id]}
+                    disabled={
+                      event.available_slots <= 0 || bookEventLoading[event.id]
+                    }
                     loading={bookEventLoading[event.id]}
                   >
                     {event.available_slots > 0 ? 'Book Now' : 'Fully Booked'}

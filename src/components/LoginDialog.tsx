@@ -29,7 +29,7 @@ export default function LoginModal({
   const handleLogin = async () => {
     setLoading(true);
     try {
-      const user = await login({email, password});
+      const user = await login({ email, password });
       onClose();
       setEmail('');
       setPassword('');

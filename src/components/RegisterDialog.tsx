@@ -88,7 +88,7 @@ export default function RegisterModal({
             Your Email
           </Typography>
           <Input
-            type='email'
+            type="email"
             label="Email"
             size="lg"
             value={email}
@@ -119,7 +119,12 @@ export default function RegisterModal({
           </div> */}
         </CardBody>
         <CardFooter className="pt-0">
-          <Button variant="gradient" onClick={handleRegistration} loading={loading} fullWidth>
+          <Button
+            variant="gradient"
+            onClick={handleRegistration}
+            loading={loading}
+            fullWidth
+          >
             Sign Up
           </Button>
           {/* <Typography variant="small" className="mt-4 flex justify-center">

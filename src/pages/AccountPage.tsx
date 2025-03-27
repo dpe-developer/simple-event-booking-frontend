@@ -1,4 +1,4 @@
-import { Typography } from "@material-tailwind/react";
+import { Typography } from '@material-tailwind/react';
 
 export default function Account() {
   return (
@@ -7,6 +7,5 @@ export default function Account() {
         Account
       </Typography>
     </>
-  )
-
+  );
 }
