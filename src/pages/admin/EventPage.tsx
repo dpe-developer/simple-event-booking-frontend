@@ -147,7 +147,7 @@ export default function EventPage() {
     try {
       if(confirm("Are you sure do you want to delete this event?")) {
         const response = await deleteEvent(eventId);
-        fetchEvents(currentPage, searchQuery)
+        fetchEvents(currentPage, searchQuery);
       }
     } catch (error: any) {
       console.error('Error booking event:', error);
@@ -159,9 +159,15 @@ export default function EventPage() {
 
   return (
     <>
-      <Typography variant="h3" color="blue-gray" className="mb-6 text-center">
+      <Typography variant="h3" color="blue-gray" className="mb-5 text-center">
         Events
       </Typography>
+
+      <div className="flex justify-center mb-5">
+        <Button onClick={() => handleOpenCreateEventDialog("Create")} variant="gradient" color="green">
+          Create Event
+        </Button>
+      </div>
 
       {/* Filters */}
       <div className="mb-2 flex flex-col sm:flex-row gap-4">
@@ -172,11 +178,8 @@ export default function EventPage() {
           onChange={handleSearchChange} // Use the new handler
           placeholder="Search by event name..."
         />
-        <Button onClick={() => handleOpenCreateEventDialog("Create")} variant="gradient" color="green">
-          Create Event
-        </Button>
       </div>
-
+      
       {/* Events */}
       {loading ? (
         <SkeletonLoader />
@@ -250,7 +253,7 @@ export default function EventPage() {
                     className="justify-center"
                     variant="gradient"
                     color="red"
-                    loading={loadingEditEvent[event.id]}
+                    loading={loadingDeleteEvent[event.id]}
                   >
                     Delete
                   </Button>
