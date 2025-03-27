@@ -135,13 +135,13 @@ export default function CreateEventDialog({
                 {...register("capacity", {
                   required: "Capacity is required",
                   valueAsNumber: true,
-                  min: { value: minimumCapacity, message: "Capacity must be at least 1" },
+                  min: { value: minimumCapacity, message: `Capacity must be at least ${minimumCapacity}` },
                 })}
                 color="gray"
                 size="lg"
                 label="Capacity"
                 type="number"
-                min={1}
+                min={minimumCapacity}
                 step={1}
                 placeholder="eg. 10"
               />
