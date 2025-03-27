@@ -80,26 +80,6 @@ export default function StickyNavbar() {
             Events
           </a>
         </Typography>
-        {/* <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="/admin/bookings" className="flex items-center">
-          Bookings
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="account" className="flex items-center">
-          Account
-        </a>
-      </Typography> */}
       </ul>
     ) : (
       <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -123,22 +103,12 @@ export default function StickyNavbar() {
             Bookings
           </a>
         </Typography>
-        {/* <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="/account" className="flex items-center">
-          Account
-        </a>
-      </Typography> */}
       </ul>
     );
 
   return (
     <>
-      <Navbar className="sticky top-0 z-10 h-max mx-auto rounded-full px-4 py-2 lg:px-8 lg:py-4">
+      <Navbar className="sticky top-0 z-10 h-max mx-auto rounded-none px-4 py-2 lg:px-8 lg:py-4">
         <div className="flex items-center justify-between text-blue-gray-900">
           <Typography
             as="a"
@@ -164,6 +134,7 @@ export default function StickyNavbar() {
                   fullWidth
                   variant="gradient"
                   size="sm"
+                  className="hidden lg:inline-block"
                   onClick={handleLogout}
                   loading={loading}
                 >
