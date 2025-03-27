@@ -210,6 +210,7 @@ export default function StickyNavbar() {
                 size="sm"
                 onClick={handleLogout}
                 loading={loading}
+                className="flex items-center justify-center gap-2"
               >
                 Sign out
               </Button>

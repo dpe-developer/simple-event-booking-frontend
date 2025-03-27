@@ -287,7 +287,7 @@ export default function EventPage() {
         currentPage={currentPage}
         lastPage={lastPage}
         loading={loading}
-        onPageChange={(page) => setCurrentPage(page)}
+        onPageChange={(page: number) => setCurrentPage(page)}
       />
 
       <ViewEventDetailsDialog

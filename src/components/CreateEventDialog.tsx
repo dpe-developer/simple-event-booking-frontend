@@ -83,7 +83,7 @@ export default function CreateEventDialog({
       size="sm"
       open={isOpen}
       handler={onClose}
-      className="p-4"
+      className="p-2"
       dismiss={{
         outsidePress: false,
         escapeKey: false,

@@ -13,7 +13,16 @@ export default function Pagination({
 }: PaginationProps) {
 
   const handlePageChange = (page: number) => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const scrollOptions: ScrollToOptions = { top: 0, behavior: 'smooth' };
+    // Add a slight delay before scrolling to the top
+    setTimeout(() => {
+      const scrollOptions: ScrollToOptions = { top: 0, behavior: 'smooth' };
+      if (window.scrollTo) {
+        window.scrollTo(scrollOptions);
+      } else {
+        document.documentElement.scrollTo(scrollOptions);
+      }
+    }, 100); // Delay of 100ms
     onPageChange(page);
   };
 

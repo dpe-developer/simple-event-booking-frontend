@@ -124,6 +124,7 @@ export default function RegisterModal({
             onClick={handleRegistration}
             loading={loading}
             fullWidth
+            className="flex items-center justify-center gap-2"
           >
             Sign Up
           </Button>
